@@ -4,6 +4,11 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <script
+      src="https://kit.fontawesome.com/4c536a6bd5.js"
+      crossorigin="anonymous"
+    ></script>
     <title>Calculator</title>
 </head>
 <body>
@@ -13,31 +18,58 @@
         </div>
         <div class="button-grid">
 
-            <button class="clear-btn">CLEAR</button>
-            <button class="delete">DELETE</button>
+            <div class="row">
+                <button class="clear-btn">CLEAR</button>
+                <button class="delete-btn">DELETE</button>
+            </div>
+            
+            <div class="row">
+                <button class="btn">7</button>
+                <button class="btn">8</button>
+                <button class="btn">9</button>
+                <button class="btn">÷</button>
+            </div>
+            
 
-            <button class="btn">7</button>
-            <button class="btn">8</button>
-            <button class="btn">9</button>
-            <button class="btn">÷</button>
+            <div class="row">
+                <button class="btn">4</button>
+                <button class="btn">5</button>
+                <button class="btn">6</button>
+                <button class="btn">×</button>
+            </div>
+            
 
-            <button class="btn">4</button>
-            <button class="btn">5</button>
-            <button class="btn">6</button>
-            <button class="btn">×</button>
+            <div class="row">
+                <button class="btn">1</button>
+                <button class="btn">2</button>
+                <button class="btn">3</button>
+                <button class="btn">-</button>
+            </div>
+            
 
-            <button class="btn">1</button>
-            <button class="btn">2</button>
-            <button class="btn">3</button>
-            <button class="btn">-</button>
-
-            <button class="btn">.</button>
-            <button class="btn">0</button>
-            <button class="btn">=</button>
-            <button class="btn">+</button>
+            <div class="row">
+                <button class="btn">.</button>
+                <button class="btn">0</button>
+                <button class="btn">=</button>
+                <button class="btn">+</button>
+            </div>
+            
 
             
         </div>
     </div>
+    <footer class="footer">
+        <p>
+          Copyright ©
+          <script>
+            document.write(new Date().getFullYear())
+          </script>
+          jonasmaximilian
+        </p>
+        <a href="https://github.com/jonasmaximilian" target="_blank">
+          <i class="fab fa-github"></i>
+        </a>
+      </footer>
+    <script src="script.js"></script>
 </body>
 </html>
