@@ -16,16 +16,22 @@ clearbtn.addEventListener('click', () => {
     display.textContent = 0;
 });
 
+deletebtn.addEventListener('click', () => {
+    display.textContent = display.textContent.slice(0, -1);
+    displayValue = display.textContent;
+});
 
 var regNum = /^\d+$/;
 btns.forEach(btn => {
     btn.addEventListener('click', () =>{
-        if(btn.textContent.match(regNum) && display.textContent.length < 7){
+        if(btn.textContent.match(regNum) && display.textContent.length < 11){
             display.textContent = parseInt(display.textContent += btn.textContent);
             displayValue = parseInt(display.textContent);
         };
     });
 });
+
+
 
 function add(a, b){
     return a+b;
