@@ -1,4 +1,8 @@
 console.log("Hello, world!");
+
+
+// TODO: second text on screen that shows user the firstOperator and the current Operation
+
 let displayValue;
 let firstOperator = null;
 let secondOperator = null;
@@ -40,10 +44,17 @@ btns.forEach(btn => {
             
             if(currentOperation != null){
                 secondOperator = parseFloat(display.textContent);
-                firstOperator = operate(firstOperator, secondOperator, currentOperation);
-                display.textContent = firstOperator;
-                resetScreen = true;
-                currentOperation = btn.textContent;
+                console.log(secondOperator);
+                if(currentOperation === '÷' && display.textContent === '0') display.textContent = 'lmao';
+                else {
+                    firstOperator = operate(firstOperator, secondOperator, currentOperation);
+                
+                
+                    display.textContent = firstOperator;
+                    resetScreen = true;
+                    currentOperation = btn.textContent;
+                }
+
             } 
             else{
                 firstOperator = parseFloat(display.textContent);
@@ -58,7 +69,9 @@ btns.forEach(btn => {
         }
 
         if(btn.textContent == '='){
-            if(currentOperation != null){
+            if(currentOperation === '÷' && display.textContent === '0') display.textContent = 'lmao';
+
+            else if(currentOperation != null){
                 secondOperator = parseFloat(display.textContent);
                 console.log(secondOperator);
                 firstOperator = operate(firstOperator, secondOperator, currentOperation);
