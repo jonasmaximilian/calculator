@@ -8,6 +8,9 @@ const display = document.querySelector('.currentDisplay');
 const btns = document.querySelectorAll('.btn');
 const clearbtn = document.querySelector('.clear-btn');
 const deletebtn = document.querySelector('.delete-btn');
+const pointbtn = document.querySelector('#point-btn');
+
+
 
 clearbtn.addEventListener('click', () => {
     firstOperator = 0;
@@ -25,11 +28,20 @@ var regNum = /^\d+$/;
 btns.forEach(btn => {
     btn.addEventListener('click', () =>{
         if(btn.textContent.match(regNum) && display.textContent.length < 11){
-            display.textContent = parseInt(display.textContent += btn.textContent);
-            displayValue = parseInt(display.textContent);
+            display.textContent = parseFloat(display.textContent += btn.textContent);
+            displayValue = parseFloat(display.textContent);
         };
+        if(btn.textContent == '÷' || btn.textContent == '×' || btn.textContent == '+' || btn.textContent == '+'){
+            firstOperator = displayValue;
+            currentOperation = btn.textContent;
+        };
+        if(btn.textContent == '.' && !(display.textContent.includes('.'))){
+            display.textContent += btn.textContent;
+            displayValue = parseFloat(display.textContent);
+        }
     });
 });
+
 
 
 
