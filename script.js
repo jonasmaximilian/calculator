@@ -46,7 +46,8 @@ btns.forEach(btn => {
                 currentOperation = btn.textContent;
             } 
             else{
-                firstOperator = displayValue;
+                firstOperator = display.textContent;
+                console.log(firstOperator);
                 currentOperation = btn.textContent;
                 resetScreen = true;
             }
@@ -54,6 +55,18 @@ btns.forEach(btn => {
         if(btn.textContent == '.' && !(display.textContent.includes('.'))){
             display.textContent += btn.textContent;
             displayValue = parseFloat(display.textContent);
+        }
+
+        if(btn.textContent == '='){
+            if(currentOperation != null){
+                secondOperator = parseFloat(display.textContent);
+                firstOperator = operate(firstOperator, secondOperator, currentOperation);
+                console.log(firstOperator);
+                display.textContent = firstOperator;
+                resetScreen = true;
+                currentOperation = null;
+            } 
+
         }
     });
 });
