@@ -46,7 +46,7 @@ btns.forEach(btn => {
                 currentOperation = btn.textContent;
             } 
             else{
-                firstOperator = display.textContent;
+                firstOperator = parseFloat(display.textContent);
                 console.log(firstOperator);
                 currentOperation = btn.textContent;
                 resetScreen = true;
@@ -54,12 +54,13 @@ btns.forEach(btn => {
         };
         if(btn.textContent == '.' && !(display.textContent.includes('.'))){
             display.textContent += btn.textContent;
-            displayValue = parseFloat(display.textContent);
+            parseFloat(display.textContent);
         }
 
         if(btn.textContent == '='){
             if(currentOperation != null){
                 secondOperator = parseFloat(display.textContent);
+                console.log(secondOperator);
                 firstOperator = operate(firstOperator, secondOperator, currentOperation);
                 console.log(firstOperator);
                 display.textContent = firstOperator;
@@ -91,8 +92,8 @@ function divide(a, b){
 };
 
 function operate(a, b, op){
-    a = parseInt(a);
-    b = parseInt(b);
+    a = parseFloat(a);
+    b = parseFloat(b);
     switch(op){
         case '+':
             return add(a,b);
