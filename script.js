@@ -1,8 +1,9 @@
 console.log("Hello, world!");
 let displayValue;
-let firstOperator = 0;
-let secondOperator = 0;
-let currentOperation;
+let firstOperator = null;
+let secondOperator = null;
+let currentOperation = null;
+let resetScreen = false;
 
 const display = document.querySelector('.currentDisplay');
 const btns = document.querySelectorAll('.btn');
@@ -28,12 +29,27 @@ var regNum = /^\d+$/;
 btns.forEach(btn => {
     btn.addEventListener('click', () =>{
         if(btn.textContent.match(regNum) && display.textContent.length < 11){
+            if(resetScreen) {
+                display.textContent = '';
+                resetScreen = false;
+            }
             display.textContent = parseFloat(display.textContent += btn.textContent);
             displayValue = parseFloat(display.textContent);
         };
-        if(btn.textContent == '÷' || btn.textContent == '×' || btn.textContent == '+' || btn.textContent == '+'){
-            firstOperator = displayValue;
-            currentOperation = btn.textContent;
+        if(btn.textContent == '÷' || btn.textContent == '×' || btn.textContent == '+' || btn.textContent == '-'){
+            
+            if(currentOperation != null){
+                secondOperator = parseFloat(display.textContent);
+                firstOperator = operate(firstOperator, secondOperator, currentOperation);
+                display.textContent = firstOperator;
+                resetScreen = true;
+                currentOperation = btn.textContent;
+            } 
+            else{
+                firstOperator = displayValue;
+                currentOperation = btn.textContent;
+                resetScreen = true;
+            }
         };
         if(btn.textContent == '.' && !(display.textContent.includes('.'))){
             display.textContent += btn.textContent;
