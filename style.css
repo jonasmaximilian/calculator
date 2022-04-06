@@ -19,12 +19,17 @@ body{
     display: flex;
     justify-content: flex-end;
     align-items: flex-end;
+    flex-direction: column;
     border: 2px solid black;
     padding: 16px;
     background-color: #f6f6f6;
     border-radius: 5px;
     height: 64px;
     font-size: 40px;
+}
+
+.lastDisplay{
+    font-size: 20px;
 }
 
 .row{

@@ -14,6 +14,7 @@ const btns = document.querySelectorAll('.btn');
 const clearbtn = document.querySelector('.clear-btn');
 const deletebtn = document.querySelector('.delete-btn');
 const pointbtn = document.querySelector('#point-btn');
+const lastDisplay = document.querySelector('.lastDisplay');
 
 
 
@@ -22,6 +23,7 @@ clearbtn.addEventListener('click', () => {
     secondOperator = 0;
     currentOperation = null;
     display.textContent = 0;
+    lastDisplay.textContent = '';
 });
 
 deletebtn.addEventListener('click', () => {
@@ -44,12 +46,9 @@ btns.forEach(btn => {
             
             if(currentOperation != null){
                 secondOperator = parseFloat(display.textContent);
-                console.log(secondOperator);
                 if(currentOperation === '÷' && display.textContent === '0') display.textContent = 'lmao';
                 else {
                     firstOperator = operate(firstOperator, secondOperator, currentOperation);
-                
-                
                     display.textContent = firstOperator;
                     resetScreen = true;
                     currentOperation = btn.textContent;
@@ -61,6 +60,7 @@ btns.forEach(btn => {
                 console.log(firstOperator);
                 currentOperation = btn.textContent;
                 resetScreen = true;
+                lastDisplay.textContent = firstOperator + ' ' + btn.textContent;
             }
         };
         if(btn.textContent == '.' && !(display.textContent.includes('.'))){
@@ -77,6 +77,7 @@ btns.forEach(btn => {
                 firstOperator = operate(firstOperator, secondOperator, currentOperation);
                 console.log(firstOperator);
                 display.textContent = firstOperator;
+                lastDisplay.textContent += ' ' + secondOperator + ' =';
                 resetScreen = true;
                 currentOperation = null;
             } 
