@@ -1,14 +1,3 @@
-console.log("Hello, world!");
-
-
-// TODO: second text on screen that shows user the firstOperator and the current Operation
-
-let displayValue;
-let firstOperator = null;
-let secondOperator = null;
-let currentOperation = null;
-let resetScreen = false;
-
 const display = document.querySelector('.currentDisplay');
 const btns = document.querySelectorAll('.btn');
 const clearbtn = document.querySelector('.clear-btn');
@@ -17,6 +6,10 @@ const pointbtn = document.querySelector('#point-btn');
 const lastDisplay = document.querySelector('.lastDisplay');
 
 
+let firstOperator = null;
+let secondOperator = null;
+let currentOperation = null;
+let resetScreen = false;
 
 clearbtn.addEventListener('click', () => {
     firstOperator = 0;
@@ -28,7 +21,6 @@ clearbtn.addEventListener('click', () => {
 
 deletebtn.addEventListener('click', () => {
     display.textContent = display.textContent.slice(0, -1);
-    displayValue = display.textContent;
 });
 
 var regNum = /^\d+$/;
@@ -40,7 +32,6 @@ btns.forEach(btn => {
                 resetScreen = false;
             }
             display.textContent = parseFloat(display.textContent += btn.textContent);
-            displayValue = parseFloat(display.textContent);
         };
         if(btn.textContent == '÷' || btn.textContent == '×' || btn.textContent == '+' || btn.textContent == '-'){
             
@@ -57,7 +48,7 @@ btns.forEach(btn => {
             } 
             else{
                 firstOperator = parseFloat(display.textContent);
-                console.log(firstOperator);
+                
                 currentOperation = btn.textContent;
                 resetScreen = true;
                 lastDisplay.textContent = firstOperator + ' ' + btn.textContent;
@@ -73,9 +64,9 @@ btns.forEach(btn => {
 
             else if(currentOperation != null){
                 secondOperator = parseFloat(display.textContent);
-                console.log(secondOperator);
+                
                 firstOperator = operate(firstOperator, secondOperator, currentOperation);
-                console.log(firstOperator);
+                
                 display.textContent = firstOperator;
                 lastDisplay.textContent += ' ' + secondOperator + ' =';
                 resetScreen = true;
